@@ -35,9 +35,12 @@ export default function App() {
     src: [bgmusic],
     autoplay: true,
     loop: true,
-    volume: 0.04,
+    volume: 0.08,
   })
-
+  React.useEffect(() => {
+    bgMusic.play()
+    return () => {}
+  }, [])
   const [screenOne, setScreenOne] = React.useState(true)
   const [screenTwo, setScreenTwo] = React.useState(false)
   const [screenThree, setScreenThree] = React.useState(false)
@@ -47,9 +50,6 @@ export default function App() {
     setScreenThree(true)
     setScreenTwo(false)
   }
-  React.useEffect(() => {
-    bgMusic.play()
-  }, [])
   return (
     <div className='wrapper'>
       <div

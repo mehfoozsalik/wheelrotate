@@ -13,9 +13,18 @@ function ResultScreen(props) {
   React.useEffect(() => {
     if (props.winning === "hardLuck") {
       props.hard.play()
-    } else {
+    } else if (props.winning === "fiveVouc") {
+      props.won.play()
+    } else if (props.winning === "thousVouc") {
+      props.won.play()
+    } else if (props.winning === "threeVouc") {
+      props.won.play()
+    } else if (props.winning === "TwoVouc") {
+      props.won.play()
+    } else if (props.winning === "freeGifts") {
       props.won.play()
     }
+    return () => {}
   }, [props.winning])
   let title
   if (props.winning === "freeGifts") {
@@ -41,8 +50,22 @@ function ResultScreen(props) {
     <>
       <img className='result-logo' src={mainLogo} alt='' />
       <div className='ResultAnounce'>
-        <img className='congra' src={congrate} alt='' />
-        <img className='onwin' src={onwining} alt='' />
+        {props.winning === "hardLuck" ? (
+          <h1
+            style={{
+              textAlign: "center",
+              fontSize: "10rem",
+              color: "Red",
+            }}>
+            Sorry!
+          </h1>
+        ) : (
+          <div>
+            {" "}
+            <img className='congra' src={congrate} alt='' />
+            <img className='onwin' src={onwining} alt='' />
+          </div>
+        )}
       </div>
       {title}
     </>
